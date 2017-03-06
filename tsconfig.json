@@ -1,0 +1,19 @@
+{
+  "compilerOptions":{
+    "outDir": "./serve/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "allowJs": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "include":[
+    "src/"
+  ]
+}

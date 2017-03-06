@@ -1,0 +1,8 @@
+/serve
+/node_modules
+src/**/*.js
+src/**/*.js.map
+utils/**/*.js
+utils/**/*.js.map
+.idea
+/test/unitTests/coverage

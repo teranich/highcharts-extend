@@ -1,0 +1,30 @@
+.controlgroup-caption-wrap
+  color: #4e7bd8;
+  cursor: pointer;
+  font-size: 1.5em;
+
+//.controlgroup-marker-wrap
+
+.controlgroup-marker
+  display: inline-block;
+  cursor: pointer;
+  height: 23px;
+  width: 23px;
+  background: url(/src/static/images/ico/arrow_group.png) no-repeat center 0px;
+  background-position: 0 -23px;
+
+  //hotfix fot bootstrap 4
+  //https://github.com/pleerock/ng2-modal/issues/52
+.controlgroup-marker-collapsed
+  background-position: 0 0;
+
+.fade.in
+  opacity: 1;
+
+.modal.in .modal-dialog
+  -webkit-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+
+.modal-backdrop.in
+  opacity: 0.5;

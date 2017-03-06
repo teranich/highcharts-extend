@@ -1,0 +1,104 @@
+h1 Настройка графика
+.container
+    div.row
+        div.col-md-6
+            .form-group.row(class="btn-group",role="group",aria-label="Basic example")
+                .col-12
+                    button(type="button",class="btn btn-success") Сохранить
+                    button(type="button",class="btn btn-secondary") Отмена
+
+            .form-group.row
+                .col-12
+                    .col-8.pull-right
+                        input.form-control(type="text",id="ex1",[(ngModel)]="config.title.text",(ngModelChange)="changedFieldHandler($event)")
+                    .pull-right
+                        label(for= "ex1" class="col-form-label text-right") Заголовок
+            .row
+                .col-12
+                    div
+                        span([class]="isCollapsed0 ? 'controlgroup-marker controlgroup-marker-collapsed': 'controlgroup-marker'")
+                        span.controlgroup-caption-wrap((click)="isCollapsed0=!isCollapsed0") Что отобразить
+
+                    div([hidden]="isCollapsed0")
+                        .form-group.row
+                            .col-12
+                                .col-8.pull-right
+                                    select.form-control([(ngModel)]="object", (ngModelChange)="changedFieldHandler($event)" )
+                                        option("*ngFor"="let item of objects", [value]="item.name") {{item.verbose}}
+                                .pull-right
+                                    label(for="sel0" class="col-form-label text-right") Объект
+
+                        .form-group.row
+                            .col-12
+                                .col-8.pull-right
+                                    select.form-control([(ngModel)]="config.chart.type", (ngModelChange)="changedFieldHandler($event)" )
+                                        option("*ngFor"="let item of chartTypes", [value]="item.id") {{item.text}}
+                                .pull-right
+                                    label(for="sel0" class="col-form-label text-right") Тип графика
+
+                        .form-group.row
+                            .col-12
+                                .col-8.pull-right
+                                    select.form-control([(ngModel)]="propFunction", (ngModelChange)="changedFieldHandler($event)" )
+                                        option("*ngFor"="let item of propFunctions", [value]="item.id") {{item.text}}
+                                .pull-right
+                                    label(for="sel0" class="col-form-label text-right") Функция
+
+                        .form-group.row
+                            .col-12
+                                .col-3.pull-right
+                                    button(type="button",class="btn btn-success", (click)="selectColumn.open()") Выбрать
+                            doctype html
+                            modal(title="Modal title", #selectColumn) bla
+                                modal-header header
+                                modal-content
+                                    .form-group.row
+                                        .col-12
+                                            .col-8.pull-right
+                                                select.form-control([(ngModel)]="object", (ngModelChange)="changeObject($event)($event)" )
+                                                    option("*ngFor"="let item of objects", [value]="item.name") {{item.verbose}}
+                                            .pull-right
+                                                label(for="sel0" class="col-form-label text-right") Объект
+
+                                modal-footer footer
+
+
+            .row
+                .col-12
+                    div
+                        span([class]="isCollapsed ? 'controlgroup-marker controlgroup-marker-collapsed': 'controlgroup-marker'")
+                        span.controlgroup-caption-wrap((click)="isCollapsed=!isCollapsed") Как отобразить
+
+                    div([hidden]="isCollapsed")
+                        div(class="card card-block") blabla
+            .row
+                .col-12
+                    div
+                        span([class]="isCollapsed2 ? 'controlgroup-marker controlgroup-marker-collapsed': 'controlgroup-marker'")
+                        span.controlgroup-caption-wrap((click)="isCollapsed2=!isCollapsed2") Как отобразить
+
+                    div([hidden]="isCollapsed2")
+                        .form-group.row
+                            .col-12
+                                .col-8.pull-right
+                                    select.form-control(id="sel0",[(ngModel)]="config.style", ngControl="sel0", (ngModelChange)="changedFieldHandler($event)" )
+                                        option("*ngFor"="let item of propStyles", [value]="item.id") {{item.text}}
+                                .pull-right
+                                    label(for="sel0" class="col-form-label text-right") Стиль
+
+                        .form-group.row
+                            .col-12
+                                .col-8.pull-right
+                                    input.form-control(type="text",[(ngModel)]="config.yAxis.title.text",(ngModelChange)="changedFieldHandler($event)")
+                                .pull-right
+                                    label(class="col-form-label text-right") Подпись оси Y
+
+                        .form-group.row
+                            .col-12
+                                .col-8.pull-right
+                                    input.form-control(type="text",[(ngModel)]="config.xAxis.title.text",(ngModelChange)="changedFieldHandler($event)")
+                                .pull-right
+                                    label(class="col-form-label text-right") Подпись оси X
+
+        div.col-md-6
+            #container
