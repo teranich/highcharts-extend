@@ -1,7 +1,4 @@
 export let globalVariables: any = {
-    version: '1.3.3.7',
-    author: '0x1ad2',
-    everything: 42,
     CHART_TYPES: [
         {
             text: 'Линия',

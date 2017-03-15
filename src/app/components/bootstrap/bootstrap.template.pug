@@ -1,7 +1,7 @@
 h1 Настройка графика
 .container
     div.row
-        div.col-md-6
+        div.col-md-12
             .form-group.row(class="btn-group",role="group",aria-label="Basic example")
                 .col-12
                     button(type="button",class="btn btn-success") Сохранить
@@ -23,10 +23,10 @@ h1 Настройка графика
                         .form-group.row
                             .col-12
                                 .col-8.pull-right
-                                    select.form-control([(ngModel)]="object", (ngModelChange)="changedFieldHandler($event)" )
-                                        option("*ngFor"="let item of objects", [value]="item.name") {{item.verbose}}
+                                    select.form-control([(ngModel)]="object", (ngModelChange)="changeObject($event)" )
+                                        option("*ngFor"="let item of objects", [value]="item.id") {{item.text}}
                                 .pull-right
-                                    label(for="sel0" class="col-form-label text-right") Объект
+                                    label(class="col-form-label text-right") Объект
 
                         .form-group.row
                             .col-12
@@ -34,7 +34,7 @@ h1 Настройка графика
                                     select.form-control([(ngModel)]="config.chart.type", (ngModelChange)="changedFieldHandler($event)" )
                                         option("*ngFor"="let item of chartTypes", [value]="item.id") {{item.text}}
                                 .pull-right
-                                    label(for="sel0" class="col-form-label text-right") Тип графика
+                                    label(class="col-form-label text-right") Тип графика
 
                         .form-group.row
                             .col-12
@@ -42,7 +42,7 @@ h1 Настройка графика
                                     select.form-control([(ngModel)]="propFunction", (ngModelChange)="changedFieldHandler($event)" )
                                         option("*ngFor"="let item of propFunctions", [value]="item.id") {{item.text}}
                                 .pull-right
-                                    label(for="sel0" class="col-form-label text-right") Функция
+                                    label(class="col-form-label text-right") Функция
 
                         .form-group.row
                             .col-12
@@ -55,22 +55,34 @@ h1 Настройка графика
                                     .form-group.row
                                         .col-12
                                             .col-8.pull-right
-                                                select.form-control([(ngModel)]="object", (ngModelChange)="changeObject($event)($event)" )
-                                                    option("*ngFor"="let item of objects", [value]="item.name") {{item.verbose}}
+                                                select.form-control([(ngModel)]="object", (ngModelChange)="changeObject($event)" )
+                                                    option("*ngFor"="let item of objects", [value]="item.id") {{item.text}}
                                             .pull-right
-                                                label(for="sel0" class="col-form-label text-right") Объект
-
-                                modal-footer footer
-
+                                                label(class="col-form-label text-right") Объект
 
             .row
                 .col-12
                     div
-                        span([class]="isCollapsed ? 'controlgroup-marker controlgroup-marker-collapsed': 'controlgroup-marker'")
-                        span.controlgroup-caption-wrap((click)="isCollapsed=!isCollapsed") Как отобразить
+                        span([class]="isCollapsed3 ? 'controlgroup-marker controlgroup-marker-collapsed': 'controlgroup-marker'")
+                        span.controlgroup-caption-wrap((click)="isCollapsed3=!isCollapsed3") Как сгруппировать
+                    div([hidden]="isCollapsed3")
+                        .form-group.row
+                            .col-12
+                                .col-8.pull-right
+                                    select.form-control([(ngModel)]="field", ngControl="sel0", (ngModelChange)="changedColumnHandler($event)" )
+                                        option("*ngFor"="let item of fields", [value]="item.id") {{item.text}}
+                                .pull-right
+                                    label(class="col-form-label text-right") Колонка
 
-                    div([hidden]="isCollapsed")
-                        div(class="card card-block") blabla
+                        //- .form-group.row
+                        //-     .col-12
+                        //-         .col-8.pull-right
+                        //-             select.form-control([(ngModel)]="config.style", ngControl="sel0", (ngModelChange)="changedFieldHandler($event)" )
+                        //-                 option("*ngFor"="let item of propStyles", [value]="item.id") {{item.text}}
+                        //-         .pull-right
+                        //-             label(class="col-form-label text-right") Формат
+
+
             .row
                 .col-12
                     div
@@ -81,10 +93,10 @@ h1 Настройка графика
                         .form-group.row
                             .col-12
                                 .col-8.pull-right
-                                    select.form-control(id="sel0",[(ngModel)]="config.style", ngControl="sel0", (ngModelChange)="changedFieldHandler($event)" )
+                                    select.form-control([(ngModel)]="config.style", ngControl="sel0", (ngModelChange)="changedFieldHandler($event)" )
                                         option("*ngFor"="let item of propStyles", [value]="item.id") {{item.text}}
                                 .pull-right
-                                    label(for="sel0" class="col-form-label text-right") Стиль
+                                    label(class="col-form-label text-right") Стиль
 
                         .form-group.row
                             .col-12
@@ -100,5 +112,5 @@ h1 Настройка графика
                                 .pull-right
                                     label(class="col-form-label text-right") Подпись оси X
 
-        div.col-md-6
+        div.col-md-12
             #container
